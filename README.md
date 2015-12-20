@@ -32,7 +32,6 @@
 
 ## 版块主题
 
-**/section?board={boardName}&p={page}**
 
 1. `{boardName} 表示板块名`
 2. `{page} 表示页数`
