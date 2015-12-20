@@ -34,8 +34,8 @@
 
 **/section?board={boardName}&p={page}**
 
-- `{boardName} 表示板块名`
-- `{page} 表示页数`
+1. `{boardName} 表示板块名`
+2. `{page} 表示页数`
 
 
 
@@ -70,9 +70,9 @@
 
 **/topic?board={boardName}&id={id}&p={page}**
 
-- `{boardName} 表示版块名称`
-- `{id} 表示主题 id`
-- `{page} 表示第几页`
+1. `{boardName} 表示版块名称`
+2. `{id} 表示主题 id`
+3. `{page} 表示第几页`
 
 
 
