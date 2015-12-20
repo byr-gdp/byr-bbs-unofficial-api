@@ -1,4 +1,4 @@
-# byr-forum-non-official-api
+# BYR-forum-unofficial-API
 
 北邮人论坛非官方 API
 
@@ -34,9 +34,9 @@
 
 **/section?board={boardName}&p={page}**
 
-{boardName} 表示板块名
+* {boardName} 表示板块名
+* {page} 表示页数
 
-{page} 表示页数
 
 	{
 		"count": 30,
@@ -68,11 +68,10 @@
 
 **/topic?board={boardName}&id={id}&p={page}**
 
-{boardName} 表示版块名称
+* {boardName} 表示版块名称
+* {id} 表示主题 id
+* {page} 表示第几页
 
-{id} 表示主题 id
-
-{page} 表示第几页
 
 	{
 		"count": 30,
