@@ -70,9 +70,9 @@
 
 **/topic?board={boardName}&id={id}&p={page}**
 
-1. `{boardName} 表示版块名称`
-2. `{id} 表示主题 id`
-3. `{page} 表示第几页`
+1. `表示版块名称`
+2. `表示主题 id`
+3. `表示第几页`
 
 
 
