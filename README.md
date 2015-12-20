@@ -38,32 +38,34 @@
 * {page} 表示页数
 
 
-	{
-		"count": 30,
-		"board": "wwwtechnology",
-		"page": "1",
-		"items": [
-			{
-				"title": "[公告]WWW技术/WWWTechnology版治版方针",
-				"link": "/article/WWWTechnology/11533",
-				"pubDate": "2010-11-15",
-				"author": "xw2423",
-				"replyCount": "0",
-				"latestReplyDate": "2010-11-15",
-				"latestReplyAuthor": "xw2423"
-			},
-			{
-				"title": "征人做网站征人帮忙请发到此处",
-				"link": "/article/WWWTechnology/32869",
-				"pubDate": "2015-12-16",
-				"author": "Chon",
-				"replyCount": "3",
-				"latestReplyDate": "2015-12-18",
-				"latestReplyAuthor": "leejiaxin"
-			},
-		...
-	}
 
+
+		{
+			"count": 30,
+			"board": "wwwtechnology",
+			"page": "1",
+			"items": [
+				{
+					"title": "[公告]WWW技术/WWWTechnology版治版方针",
+					"link": "/article/WWWTechnology/11533",
+					"pubDate": "2010-11-15",
+					"author": "xw2423",
+					"replyCount": "0",
+					"latestReplyDate": "2010-11-15",
+					"latestReplyAuthor": "xw2423"
+				},
+				{
+					"title": "征人做网站征人帮忙请发到此处",
+					"link": "/article/WWWTechnology/32869",
+					"pubDate": "2015-12-16",
+					"author": "Chon",
+					"replyCount": "3",
+					"latestReplyDate": "2015-12-18",
+					"latestReplyAuthor": "leejiaxin"
+				},
+			...
+		}
+	
 ## 主题详情
 
 **/topic?board={boardName}&id={id}&p={page}**
@@ -73,33 +75,33 @@
 * {page} 表示第几页
 
 
-	{
-		"count": 30,
-		"board": "job",
-		"page": "1",
-		"items": [
-			{
-				"title": "【版务】毕业生找工作/Job版黑名单",
-				"link": "/article/Job/1724697",
-				"pubDate": "2015-07-24",
-				"author": "teath",
-				"replyCount": "1",
-				"latestReplyDate": "2015-11-11",
-				"latestReplyAuthor": "ying0252"
-			},
-			{
-				"title": "【版规】毕业生找工作/Job版版规20150713",
-				"link": "/article/Job/1722964",
-				"pubDate": "2015-07-13",
-				"author": "teath",
-				"replyCount": "0",
-				"latestReplyDate": "2015-07-13",
-				"latestReplyAuthor": "teath"
-			},
-			...
-		]
-	}
-	
+		{
+			"count": 30,
+			"board": "job",
+			"page": "1",
+			"items": [
+				{
+					"title": "【版务】毕业生找工作/Job版黑名单",
+					"link": "/article/Job/1724697",
+					"pubDate": "2015-07-24",
+					"author": "teath",
+					"replyCount": "1",
+					"latestReplyDate": "2015-11-11",
+					"latestReplyAuthor": "ying0252"
+				},
+				{
+					"title": "【版规】毕业生找工作/Job版版规20150713",
+					"link": "/article/Job/1722964",
+					"pubDate": "2015-07-13",
+					"author": "teath",
+					"replyCount": "0",
+					"latestReplyDate": "2015-07-13",
+					"latestReplyAuthor": "teath"
+				},
+				...
+			]
+		}
+		
 
 ## todo
 
