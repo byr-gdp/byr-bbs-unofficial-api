@@ -2,8 +2,14 @@ var express    = require("express");
 var superagent = require("superagent");
 var cheerio    = require("cheerio");
 var encoding   = require("encoding");
+var bodyParser = require('body-parser');
 
 var app = express();
+
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 // 讨论区 board list
 // TODO: 外部引入 board 信息
@@ -233,6 +239,67 @@ app.get("/topic", function(req, res) {
       response.items = items;
 
       res.send(response);
+    });
+});
+
+
+// 回复帖子
+// 需要参数：boardName id content user pwd 
+// boardName 版块名称
+// id        主题 id
+// content   回复内容
+// user      论坛 id
+// pwd       论坛 密码
+app.post("/reply", function(req, res) {
+  var boardName = req.body.boardName;
+  var id        = req.body.id;
+  var content   = req.body.content;
+  var user      = req.body.user;
+  var pwd       = req.body.pwd;
+
+  var url_login = "http://bbs.byr.cn/user/ajax_login.json";
+  // var url_post  = "http://bbs.byr.cn/article/" + Talking + "/ajax_post.json";
+  var url_post  = "http://bbs.byr.cn/article/" + boardName + "/ajax_post.json";
+
+  // var body_login = "id=anthozoan77&passwd=19940317gdp"
+  var body_login = "id=" + user + "&passwd=" + pwd;
+  // var body_post = "content=mark2&id=5763335&subject=Re: 妹子打水插队被打，大家说说谁有道理？";
+  var body_post = "content=" + content + "&id=" + id + "&subject=subject";
+  superagent
+    .post(url_login)
+    .send(body_login)
+    .set('X-Requested-With', 'XMLHttpRequest')
+    .set('Accept', 'application/json')
+    .parse(parser)
+    .end(function(err, sres){
+      var headers     = sres.headers;
+      var str         = JSON.stringify(headers);
+      var cookieStart = str.indexOf('set-cookie') + 13;
+      var cookieEnd   = str.indexOf('expires') - 3;
+
+      var cookie = str.substring(cookieStart, cookieEnd);
+      var cookies = cookie.split(",");
+      var result = "";
+      for(var i = 0; i < cookies.length; i++) {
+        var pos = cookies[i].indexOf(";");
+        var tmp = cookies[i].substring(1, pos);
+        result += tmp + ";";
+      }
+      superagent
+        .post(url_post)
+        .send(body_post)
+        .set('X-Requested-With', 'XMLHttpRequest')
+        .set('Accept', 'application/json')
+        .set('Cookie', result)
+        .parse(parser)
+        .end(function(err, ssres){
+          var response = JSON.stringify(ssres.text);
+          if(response.indexOf("发表成功")) {
+            res.send("发表成功");
+          } else {
+            res.send("发表失败");
+          }
+        });
     });
 });
 
