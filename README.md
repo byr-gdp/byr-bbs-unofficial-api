@@ -2,18 +2,36 @@
 
 北邮人论坛非官方 API。基于 Node.js，通过 `superagent` 抓取数据并用 `cheerio` 处理后返回 JSON 格式数据。
 
-目前仅完成数据获取（即 GET 请求），该应用通过 heroic 部署。URL 拼接基于 `https://dry-retreat-5114.herokuapp.com`
+目前完成的功能有：
+
+1. 获取十大信息
+2. 获取版块主题列表
+3. 获取主题回帖列表
+4. 回复帖子
 
 ## demo
 
 1. [获取十大信息](https://dry-retreat-5114.herokuapp.com/topten)
-2. [获取版块主题](https://dry-retreat-5114.herokuapp.com/section?board=wwwtechnology&p=1)
-3. [获取主题详情](https://dry-retreat-5114.herokuapp.com/topic?board=wwwtechnology&id=32932&p=1)
+2. [获取版块主题列表](https://dry-retreat-5114.herokuapp.com/section?board=wwwtechnology&p=1)
+3. [获取主题列表](https://dry-retreat-5114.herokuapp.com/topic?board=wwwtechnology&id=32932&p=1)
+4. 回复帖子（需参数）
+
+## Usage
+
+目前该应用已部署到 heroic，应用地址是 `https://dry-retreat-5114.herokuapp.com`，只需要按照下面的 `PATH` 说明拼接 `URL` 即可。
 
 
 ## 十大
 
+### Path
+
 **/topten**
+
+### Method
+
+**GET**
+
+### Result
 
 
 	[
@@ -37,6 +55,10 @@
 ### Path
 
 **/section?board={boardName}&p={page}**
+
+### Method
+
+**GET**
 
 ### Parameters
 
@@ -79,6 +101,10 @@
 
 **/topic?board={boardName}&id={id}&p={page}**
 
+### Method
+
+**GET**
+
 ### Parameters
 
 | 参数 | 意义 |
@@ -116,10 +142,35 @@
 		]
 	}
 		
+## 回帖
+
+### Path
+
+/reply
+
+### Method
+
+**POST**
+
+### Parameter
+
+| 参数 | 意义 |
+| :---: | :---: |
+| boardName| 版块名称 |
+| id | 帖子 id |
+| content | 回帖内容 |
+| user | 论坛 id |
+| pwd | 论坛 id 密码 |
+
+### Result
+
+成功：`发表成功`
+
+失败：`发表失败`
+
 
 ## Todo
 
 1. 维护版块名称 list
 2. 容错处理
 3. 优化回复内容
-4. POST 相关
