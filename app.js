@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 // 讨论区 board list
-// TODO: 外部引入 board 信息
+// TODO: 通过外部引入 board 信息
 // 小尾巴 0 表示 一级目录， 1 表示存在二级目录
 
 // 本站站务
@@ -63,10 +63,12 @@ var cnBoard9_0 = ["情淮徽皖·安徽", "粤广茶餐厅·广东", "巴渝人�
 
 var boardList = enBoard0_0.concat(enBoard0_1).concat(enBoard1_0).concat(enBoard1_1).concat(enBoard2_0).concat(enBoard3_0).concat(enBoard3_1).concat(enBoard4_0).concat(enBoard5_0).concat(enBoard6_0).concat(enBoard7_0).concat(enBoard8_0).concat(enBoard9_0);
 
+// 判断 boardName 是否合理
 function isBoardValid(boardName) {
   return boardList.indexOf(boardName.toLowerCase()) >= 0 ? true : false;
 }
 
+// GBK -> UTF8
 var parser = function(res, done) {
   res.text = '';
   res.setEncoding('binary');
@@ -258,13 +260,12 @@ app.post("/reply", function(req, res) {
   var pwd       = req.body.pwd;
 
   var url_login = "http://bbs.byr.cn/user/ajax_login.json";
-  // var url_post  = "http://bbs.byr.cn/article/" + Talking + "/ajax_post.json";
   var url_post  = "http://bbs.byr.cn/article/" + boardName + "/ajax_post.json";
 
-  // var body_login = "id=anthozoan77&passwd=19940317gdp"
   var body_login = "id=" + user + "&passwd=" + pwd;
-  // var body_post = "content=mark2&id=5763335&subject=Re: 妹子打水插队被打，大家说说谁有道理？";
-  var body_post = "content=" + content + "&id=" + id + "&subject=subject";
+  var body_post  = "content=" + content + "&id=" + id + "&subject=subject";
+
+  // 模拟登录，拿到 Cookie
   superagent
     .post(url_login)
     .send(body_login)
@@ -285,6 +286,7 @@ app.post("/reply", function(req, res) {
         var tmp = cookies[i].substring(1, pos);
         result += tmp + ";";
       }
+      // 利用刚才拿到的 Cookie 发帖
       superagent
         .post(url_post)
         .send(body_post)
