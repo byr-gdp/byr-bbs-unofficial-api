@@ -18,7 +18,7 @@
 
 ## Usage
 
-目前该应用已部署到 heroic，应用地址是 `https://dry-retreat-5114.herokuapp.com`，只需要按照下面的 `PATH` 说明拼接 `URL` 即可。
+目前该应用已部署到 heroxo 和阿里云上，应用地址分别是 `https://dry-retreat-5114.herokuapp.com`、`http://smartisian.club:5000`，只需要按照下面的 `PATH` 说明拼接 `URL` 即可。推荐使用阿里云，速度较快，由于没备案，所以80端口不能用...
 
 若本地运行，`git clone` 以后先执行 `npm install` 安装所需依赖，再执行 `node app.js`，然后访问 `http://127.0.0.1:5000` 即可。
 
