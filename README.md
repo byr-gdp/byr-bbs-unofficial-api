@@ -96,7 +96,7 @@
 			},
 		...
 	}
-	
+
 ## 主题详情
 
 ### Path
@@ -114,36 +114,33 @@
 | boardName| 版块名称 |
 | id | 帖子 id |
 | page | 第几页 |
+| nice | 精彩评论 |
 
 ### Result
 
 	{
-		"count": 30,
-		"board": "job",
-		"page": "1",
-		"items": [
+		board: "Job",
+		url: "http://bbs.byr.cn/article/Job/1780780?p=1",
+		count: 10,
+		page: "1",
+		items: [
 			{
-				"title": "【版务】毕业生找工作/Job版黑名单",
-				"link": "/article/Job/1724697",
-				"pubDate": "2015-07-24",
-				"author": "teath",
-				"replyCount": "1",
-				"latestReplyDate": "2015-11-11",
-				"latestReplyAuthor": "ying0252"
+				author: "Universal",
+				content: "本人应届硕士，目前只有这两个offer..."
 			},
+			...
+		],
+		nice: [
 			{
-				"title": "【版规】毕业生找工作/Job版版规20150713",
-				"link": "/article/Job/1722964",
-				"pubDate": "2015-07-13",
-				"author": "teath",
-				"replyCount": "0",
-				"latestReplyDate": "2015-07-13",
-				"latestReplyAuthor": "teath"
+				id: "byrfeifei",
+				content: "【 在 crescentstar 的大作中提到: 】: 以前应该比这个高很多吧？...",
+				floor: "第71楼"
 			},
 			...
 		]
 	}
-		
+
+
 ## 回帖
 
 ### Path
