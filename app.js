@@ -215,6 +215,7 @@ app.get("/topic", function(req, res) {
 
       var $        = cheerio.load(sres.text);
       var items    = [];
+      var nice = [];
 
       if($("*").hasClass("error")) {
         response.err = "指定的文章不存在或链接错误";
@@ -225,6 +226,7 @@ app.get("/topic", function(req, res) {
       $(".a-wrap.corner").each(function(i, e) {
         var author = $(e).find(".a-u-name").text().trim();
         var content = $(e).find(".a-content-wrap").text();
+
         var start = content.indexOf("站内") + 2;
         var end = content.indexOf("--※");
         content = content.substring(start, end);
@@ -234,11 +236,23 @@ app.get("/topic", function(req, res) {
         });
       });
 
+      $(".a-nice-comment-item").each(function(i, e){
+        var id = $(e).find(".a-nice-comment-id").text();
+        var content = $(e).find(".a-nice-comment-content").text();
+        var floor = $(e).find(".a-nice-comment-floor").text();
+        nice.push({
+          id: id,
+          content: content,
+          floor: floor,
+        });
+      });
+
       response.board = board;
       response.url   = url;
       response.count = items.length;
       response.page  = page;
       response.items = items;
+      response.nice = nice;
 
       res.send(response);
     });
@@ -246,7 +260,7 @@ app.get("/topic", function(req, res) {
 
 
 // 回复帖子
-// 需要参数：boardName id content user pwd 
+// 需要参数：boardName id content user pwd
 // boardName 版块名称
 // id        主题 id
 // content   回复内容
