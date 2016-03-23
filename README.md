@@ -114,7 +114,7 @@
 | boardName| 版块名称 |
 | id | 帖子 id |
 | page | 第几页 |
-| nice | 精彩评论 |
+| niceComment | 精彩评论 |
 
 ### Result
 
@@ -130,7 +130,7 @@
 			},
 			...
 		],
-		nice: [
+		niceComment: [
 			{
 				id: "byrfeifei",
 				content: "【 在 crescentstar 的大作中提到: 】: 以前应该比这个高很多吧？...",

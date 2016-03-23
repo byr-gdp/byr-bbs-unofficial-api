@@ -215,7 +215,7 @@ app.get("/topic", function(req, res) {
 
       var $        = cheerio.load(sres.text);
       var items    = [];
-      var nice = [];
+      var niceComment = [];
 
       if($("*").hasClass("error")) {
         response.err = "指定的文章不存在或链接错误";
@@ -240,7 +240,7 @@ app.get("/topic", function(req, res) {
         var id = $(e).find(".a-nice-comment-id").text();
         var content = $(e).find(".a-nice-comment-content").text();
         var floor = $(e).find(".a-nice-comment-floor").text();
-        nice.push({
+        niceComment.push({
           id: id,
           content: content,
           floor: floor,
@@ -252,7 +252,7 @@ app.get("/topic", function(req, res) {
       response.count = items.length;
       response.page  = page;
       response.items = items;
-      response.nice = nice;
+      response.niceComment = niceComment;
 
       res.send(response);
     });
