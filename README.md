@@ -6,8 +6,9 @@
 
 1. 获取十大信息
 2. 获取版块主题列表
-3. 获取主题回帖列表
+3. 获取主题回帖列表及精彩回复
 4. 回复帖子
+
 
 ## demo
 
@@ -18,22 +19,18 @@
 
 ## Usage
 
-目前该应用已部署到 heroxo 和阿里云上，应用地址分别是 `https://dry-retreat-5114.herokuapp.com`、`http://smartisian.club:5000`，只需要按照下面的 `PATH` 说明拼接 `URL` 即可。推荐使用阿里云，速度较快，由于没备案，所以80端口不能用...
+目前该应用已部署到 heroxo 和阿里云上，应用地址分别是 `https://dry-retreat-5114.herokuapp.com`、`http://smartisian.club:5000`，只需要按照下面的 `PATH` 说明拼接 `URL` 即可。推荐使用阿里云，速度较快，由于没备案，所以80端口不能用......
 
 若本地运行，`git clone` 以后先执行 `npm install` 安装所需依赖，再执行 `node app.js`，然后访问 `http://127.0.0.1:5000` 即可。
 
 
-## 十大
+### 十大
 
-### Path
+| Path | Method |
+| :---:|:------:|
+| /topten | GET |
 
-**/topten**
-
-### Method
-
-**GET**
-
-### Result
+#### Result
 
 
 	[
@@ -52,24 +49,18 @@
 		...
 	}
 
-## 版块主题
+### 版块主题
 
-### Path
-
-**/section?board={boardName}&p={page}**
-
-### Method
-
-**GET**
-
-### Parameters
+| Path | Method |
+| :---:|:------:|
+| /section?board={boardName}&p={page} | GET |
 
 | 参数 | 意义 |
 | :---: | :---: |
 | boardName| 版块名称 |
-| page | 第几页 |
+| page | 页数 |
 
-### Result
+#### Result
 
 	{
 		"count": 30,
@@ -97,17 +88,11 @@
 		...
 	}
 
-## 主题详情
+### 主题详情
 
-### Path
-
-**/topic?board={boardName}&id={id}&p={page}**
-
-### Method
-
-**GET**
-
-### Parameters
+| Path | Method |
+| :---:|:------:|
+| /topic?board={boardName}&id={id}&p={page} | GET |
 
 | 参数 | 意义 |
 | :---: | :---: |
@@ -116,7 +101,7 @@
 | page | 第几页 |
 | niceComment | 精彩评论 |
 
-### Result
+#### Result
 
 	{
 		board: "Job",
@@ -141,17 +126,11 @@
 	}
 
 
-## 回帖
+### 回帖
 
-### Path
-
-**/reply**
-
-### Method
-
-**POST**
-
-### Parameter
+| Path | Method |
+| :---:|:------:|
+| /reply | POST |
 
 | 参数 | 意义 |
 | :---: | :---: |
@@ -161,15 +140,16 @@
 | user | 论坛 id |
 | pwd | 论坛 id 密码 |
 
-### Result
+#### Result
 
 成功：`发表成功`
 
 失败：`发表失败`
 
 
-## Todo
+## Todos
 
-1. 维护版块名称 list
+1. 版块名称外部文件引入
 2. 容错处理
-3. 优化回复内容
+3. 优化回复内容（从 m.byr.cn 爬去数据）
+4. CI: JSHint
