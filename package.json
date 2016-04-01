@@ -1,18 +1,23 @@
 {
-  "name": "byr-forum-api",
-  "version": "1.0.0",
-  "description": "",
+  "name": "byr-bbs-unofficial-api",
+  "version": "0.0.1",
+  "description": "北邮人论坛非官方 API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "Echo 'all test is executed by travis.\n'"
   },
   "author": "byr-gdp",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.14.2",
     "cheerio": "^0.19.0",
     "encoding": "^0.1.11",
     "express": "^4.13.3",
     "superagent": "^1.6.1"
+  },
+  "devDependencies": {
+    "codecov": "^1.0.1",
+    "istanbul": "^0.4.2",
+    "jshint": "^2.9.1"
   }
 }
