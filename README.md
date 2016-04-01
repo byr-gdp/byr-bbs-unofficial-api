@@ -1,5 +1,8 @@
 # BYR-forum-unofficial-API
 
+[![Build Status](https://travis-ci.org/byr-gdp/byr-bbs-unofficial-api.svg?branch=master)](https://travis-ci.org/byr-gdp/byr-bbs-unofficial-api)
+[![codecov.io](https://codecov.io/github/byr-gdp/byr-bbs-unofficial-api/coverage.svg?branch=master)](https://codecov.io/github/byr-gdp/byr-bbs-unofficial-api?branch=master)
+
 北邮人论坛非官方 API。基于 Node.js，通过 `superagent` 抓取数据并用 `cheerio` 处理后返回 JSON 格式数据。
 
 目前完成的功能有：
