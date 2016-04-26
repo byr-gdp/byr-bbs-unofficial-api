@@ -3,6 +3,7 @@ var superagent = require("superagent");
 var cheerio    = require("cheerio");
 var encoding   = require("encoding");
 var bodyParser = require('body-parser');
+var boardInfo = require('./lib/utily.js');
 
 var app = express();
 
@@ -11,25 +12,26 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-// 从外部文件读取讨论区信息
-var boardEn = require('./config_board_en.json');
-var boardCn = require('./config_board_cn.json');
+// move to ./lib/utily.js
+// // 从外部文件读取讨论区信息
+// var boardEn = require('./config_board_en.json');
+// var boardCn = require('./config_board_cn.json');
 
-var boardListEn = [];
-var boardListCn = [];
+// var boardListEn = [];
+// var boardListCn = [];
 
-for (var item in boardEn) {
-  boardListEn = boardListEn.concat(boardEn[item]);
-}
+// for (var item in boardEn) {
+//   boardListEn = boardListEn.concat(boardEn[item]);
+// }
 
-for (var item in boardCn) {
-  boardListCn = boardListCn.concat(boardCn[item]);
-}
+// for (var item in boardCn) {
+//   boardListCn = boardListCn.concat(boardCn[item]);
+// }
 
 // 判断 boardName 是否合理
-function isBoardValid(boardName) {
-  return boardListEn.indexOf(boardName.toLowerCase()) >= 0 ? true : false;
-}
+// function isBoardValid(boardName) {
+//   return boardListEn.indexOf(boardName.toLowerCase()) >= 0 ? true : false;
+// }
 
 // GBK -> UTF8
 // bbs.byr.cn 编码方式为 GBK
@@ -52,8 +54,8 @@ app.get("/topten", function(req, res) {
 
   superagent.get(url).parse(parser).end(function(err, sres) {
     if(err) {
-      // return next(err);
-      console.error(err);
+      return console.error(err);
+      // console.error(err);
     }
     var $ = cheerio.load(sres.text, {
       xmlMode: true
@@ -85,7 +87,8 @@ app.get("/section", function(req, res) {
   var page     = req.query.p || 1;
   var response = {};
 
-  if(!isBoardValid(board)) {
+  // if(!isBoardValid(board)) {
+  if(!boardInfo.isBoardValid(board)) {
     response.err = "无法找到该分区";
     res.send(response);
     return;
@@ -154,7 +157,8 @@ app.get("/topic", function(req, res) {
   var baseUrl  = 'http://m.byr.cn/article/';
   var response = {};
 
-  if(!isBoardValid(board)) {
+  // if(!isBoardValid(board)) {
+  if(!boardInfo.isBoardValid(board)) {
     response.err = "无法找到该分区";
     res.send(response);
     return;
@@ -278,7 +282,7 @@ app.post("/reply", function(req, res) {
         var tmp = cookies[i].substring(1, pos);
         result += tmp + ";";
       }
-      // 利用刚才拿到的 Cookie 发帖
+      // 利用拿到的 Cookie 发帖
       superagent
         .post(url_post)
         .send(body_post)

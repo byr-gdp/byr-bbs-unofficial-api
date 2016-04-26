@@ -2,6 +2,7 @@ language: node_js
 node_js:
     - 4.1.0
 script:
-    - istanbul cover test.js
+    #- istanbul cover test.js
+    - istanbul cover _mocha
     - ./node_modules/jshint/bin/jshint app.js
     - ./node_modules/.bin/codecov --token=d5712892-9268-448a-a73a-b98742dee7fc

@@ -16,8 +16,10 @@
     "superagent": "^1.6.1"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "codecov": "^1.0.1",
     "istanbul": "^0.4.2",
-    "jshint": "^2.9.1"
+    "jshint": "^2.9.1",
+    "mocha": "^2.4.5"
   }
 }
